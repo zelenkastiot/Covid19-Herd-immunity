@@ -9,6 +9,6 @@
 
 <hr>
 <p align="center">
-<img src="https://raw.githubusercontent.com/zelenelez/images/master/finki.jpg" width=70%;></img> <br>
+<img src="https://raw.githubusercontent.com/zelenelez/images/master/finki.jpg" width=40%;></img> <br>
 Spring, 2021
 </p>
