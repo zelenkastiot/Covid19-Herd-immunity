@@ -1,4 +1,5 @@
 # Covid19-Herd-immunity
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KMBSnVl7lH0mtuMnhX74D9xIPHC5Uv4g?usp=sharing)
 
 - **Mentors**: Prof. Miroslav Mirchev, Prof. Lasko Basnarkov
 - **Students:** Kiril Zelenkovski
