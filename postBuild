@@ -1,0 +1,3 @@
+# Download json files 
+wget -O threshold-json.zip https://osf.io/m2r3v/download
+unzip -j threshold-json.zip -d $HOME/05/

@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Листа од параметри &#8212; Имунитет на стадо</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/virus.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Воведување на карантин" href="4_1_quarantine.html" />
+    <link rel="prev" title="SEIRD модел" href="../03/3_2.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/virus.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Имунитет на стадо</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Вовед
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Кодирање на SIR
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/1_modeling.html">
+   Моделирање на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/1_1_model_math.html">
+   Ширење на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02/2_equations.html">
+   SIR модел
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02/2_2_1_scenario.html">
+   Програмирање на модел
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_2_D.html">
+     Интерактивен график 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_3_gamma.html">
+     Интерактивен график 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_4_beta.html">
+     Интерактивен график 3
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Можни проширувања на SIR
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_states.html">
+   Транзиции на состојби
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_1.html">
+   SEIR модел
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_2.html">
+   SEIRD модел
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Временски зависни променливи
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Листа параметри
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_1_quarantine.html">
+   Воведување карантин
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_2_r0.html">
+   Временски зависно R0
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_3_age.html">
+   Временски зависна смрттна стапка
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Erdős–Rényi мрежи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_networkModels.html">
+   Мрежи vs. равенки
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_1_er-networks.html">
+   Ширење на вируси на ER мрежи
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_2_contact-tracing.html">
+   Следење на контакти
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_3_epidemic-threshold.html">
+   Threshold на епидемија
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_4_power-law.html">
+   Алтернативна Power-law мрежа
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Имунитет на стадо
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_herd-explained.html">
+   Што е имунитет на стадо?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_1_herd-immunity.html">
+   Mean degree од симулации
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_2_prob-equations.html">
+   Процент на заразеност
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Дополнителни ресурси
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibs.html">
+   Референци
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intresting.html">
+   Интересни статии, видеа
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/zelenelez/book_test">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04/4_main.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zelenelez/book_test"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zelenelez/book_test/issues/new?title=Issue%20on%20page%20%2F04/4_main.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zelenelez/book_test/edit/main/04/4_main.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>Листа од параметри<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Моменталната (проширена) листа од параметри кои ги користевме до сега:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span><strong>:</strong> вкупна популација</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(t)\)</span><strong>:</strong> број на подлежни луѓе на ден <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E(t)\)</span><strong>:</strong> број на изложени луѓе на ден <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span><strong>:</strong> број на инфицирани луѓе на ден <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span><strong>:</strong> број на оздравени луѓе на ден <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(D(t)\)</span><strong>:</strong> број на починати луѓе на ден <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span><strong>:</strong> очекуваниот број на луѓе на кои заразена личност ја пренесува болеста</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span><strong>:</strong> бројот на денови што личноста ја чува во себе и може да ја шири болеста</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span><strong>:</strong> дел од заразени личности што заздравуваат на ден (<span class="math notranslate nohighlight">\(\gamma= \frac{1}{D}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{0}\)</span><strong>:</strong> вкупниот број на луѓе кој една личност заразува (<span class="math notranslate nohighlight">\(R_{0}=\beta \cdot D\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span><strong>:</strong> времетраење на инкубациски период</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span><strong>:</strong> стапка на смртност (дел од заразените што починуваат, се среќава  во литература како fatality rate)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span><strong>:</strong> стапката на денови за еден заразен да почине (=1/денови од заразен до смрт)</p></li>
+</ul>
+<p>Како што може да видиме од тоа до сега што моделиравме само функциите односно оделите (<span class="math notranslate nohighlight">\(S,E,I,R,D\)</span>) се менуваат преку време што е крајно нереалистично.</p>
+<p>Пример, најчесто вкупниот број на луѓе што една личност заразува има премала веројатност да биде константно. Истотака карантин и сите мерки што се превземаат како носење маски и рестрикција за движење во некои поголеми маркети го намалува бројот на заразени, каде до сега нашиот моментален модел не ги опфаќа.</p>
+<p>За да се дојде до “пореалистични” сценарија е нужно параметрите да ги направиме да се <strong>менуваат преку време</strong>.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zelenelez/book_test",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../03/3_2.html" title="previous page">SEIRD модел</a>
+    <a class='right-next' id="next-link" href="4_1_quarantine.html" title="next page">Воведување на карантин</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kiril Zelenkovski<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Моделирање и симулација [ФИНКИ]
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

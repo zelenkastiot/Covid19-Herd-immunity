@@ -1,0 +1,48 @@
+# Book settings
+title                       : "Имунитет на стадо"
+author                      : "Kiril Zelenkovski"
+copyright                   : "2021"  
+logo                        : images/virus.png  
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+
+execute:
+  execute_notebooks: 'off'
+
+only_build_toc_files: true 
+
+html:
+  favicon                   : images/virus.ico
+  use_edit_page_button      : true  
+  use_repository_button     : true  
+  use_issues_button         : true  
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  
+  extra_footer              : "Моделирање и симулација [ФИНКИ]"  
+  home_page_in_navbar       : true  
+  baseurl                   : ""  
+  comments:
+    hypothesis              : true
+
+
+launch_buttons:
+  notebook_interface        : "jupyterlab"  
+  binderhub_url             : "https://mybinder.org"
+  thebe                     : true  
+  colab_url                 : "https://colab.research.google.com/drive/1vq_Ll-xAgFfW-kkDin5WUucNtY09HUka#scrollTo=1dE2kHUFW7ju"
+
+repository:
+  url                       : https://github.com/zelenelez/book_test 
+  branch                    : main  
+
+parse:
+  myst_enable_extensions:
+    - html_image
+    - amsmath
+    - colon_fence
+    - deflist 
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify 
+    - replacements
+    - smartquotes
+    - substitution

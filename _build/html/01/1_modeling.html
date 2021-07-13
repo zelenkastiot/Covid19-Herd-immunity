@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Моделирање на заразна болест &#8212; Имунитет на стадо</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/virus.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ширење на заразна болест" href="1_1_model_math.html" />
+    <link rel="prev" title="Вовед" href="../intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/virus.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Имунитет на стадо</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Вовед
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Кодирање на SIR
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Моделирање на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_1_model_math.html">
+   Ширење на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02/2_equations.html">
+   SIR модел
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02/2_2_1_scenario.html">
+   Програмирање на модел
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_2_D.html">
+     Интерактивен график 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_3_gamma.html">
+     Интерактивен график 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_4_beta.html">
+     Интерактивен график 3
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Можни проширувања на SIR
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_states.html">
+   Транзиции на состојби
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_1.html">
+   SEIR модел
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_2.html">
+   SEIRD модел
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Временски зависни променливи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_main.html">
+   Листа параметри
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_1_quarantine.html">
+   Воведување карантин
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_2_r0.html">
+   Временски зависно R0
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_3_age.html">
+   Временски зависна смрттна стапка
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Erdős–Rényi мрежи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_networkModels.html">
+   Мрежи vs. равенки
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_1_er-networks.html">
+   Ширење на вируси на ER мрежи
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_2_contact-tracing.html">
+   Следење на контакти
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_3_epidemic-threshold.html">
+   Threshold на епидемија
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_4_power-law.html">
+   Алтернативна Power-law мрежа
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Имунитет на стадо
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_herd-explained.html">
+   Што е имунитет на стадо?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_1_herd-immunity.html">
+   Mean degree од симулации
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_2_prob-equations.html">
+   Процент на заразеност
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Дополнителни ресурси
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibs.html">
+   Референци
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intresting.html">
+   Интересни статии, видеа
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/zelenelez/book_test">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/01/1_modeling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zelenelez/book_test"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zelenelez/book_test/issues/new?title=Issue%20on%20page%20%2F01/1_modeling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zelenelez/book_test/edit/main/01/1_modeling.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zelenelez/book_test/main?urlpath=lab/tree/01/1_modeling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/drive/1vq_Ll-xAgFfW-kkDin5WUucNtY09HUka#scrollTo=1dE2kHUFW7ju/github/zelenelez/book_test/blob/main/01/1_modeling.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>Моделирање на заразна болест<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Во последната година неочекувано се најдовме во ситуација во која науката за ширење и моделирање на заразни болести е од енормно значење за нас. На индивидуално ниво, сакаме и треба да знаеме што да очекуваме од карантин, вакцини и како ни влијае терапаијата што ни ја препишуваат матичните лекари. На ниво на популација пак, сакаме да знаеме како една зараза станува епидемија и потоа пандемија. Дефинитивно сакаме сигурност кога станува збор за чекорите врз кои ни се засновани стратегии за борба со вакви болести бидејќи многу животи се ризикуваат.</p>
+<p>Но, науката не гарантира секогаш сигурност. Било кое научно достигнување е засновано зад <strong>модели</strong> што ги конструираме со цел да дознаеме повеќе за работите што не интересиират и екпсериментите што ги спроведуваме, независно дали моделите соодвестуваат со реалноста. Математичките модели се само карикатури од вистински системи и ситуации, имаат цел само да ги доловат  фундаменталните механизми на процесите што доведува до објаснување (за набљудувања или предвидувања).</p>
+<div class="admonition-george-box-1919-2013 admonition">
+<p class="admonition-title">George Box [1919-2013]</p>
+<p><em><strong>“Essentially all models are wrong, but some are useful.”</strong></em> <a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/j.1740-9713.2010.00442.x">[1]</a></p>
+</div>
+<p>Иако за мене секогаш оваа изрека ќе биде првото предавање по предметот “Машинско учење” од акад. проф. Љупчо Коцарев, што познатиот статистичар Џорџ сака да опише е како моделите се сиромашни портрети на вистинскиот свет, независно нивната комплексност. Но, <strong>корисен</strong> модел може да ни даде многу вредни и корисни гледишта за проблеми кои не интересиират. Ни дозволуваат да ги разбираме и засноваме нашите одлуки врз инфромации наспроти шпекулации.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">Прв запис поврзан со моделирање на заразна болест</p>
+<p>Најстариот запис за математички модел за ширење на зараза е евидентиран во 1760 година од швајцарскиот математичар и физичар Даниел Бернуоли [1700 – 1782]. Иако примарно бил обучен како физичар, делото на Бернуоли сеуште е една од главните догми по кои е заснована теоријата за ширење на микроби (germ theory). Во 1760 година почнал да развива математички модел со цел да научно да ја одбрани употребата на вакцни против мали сипаници (smallpox). Пресметките од овој модел докажале како вакцинацијата може универзално да делува - зголемувајќи го животниот век од 26 години 7 месеци на 29 години 9 месеци. <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/15334536/">[2]</a></p>
+</div>
+<p>Заразни болести се доста голем товар на општественото здравство и економијата. Нови болести се појавуваат често, и стари болести мутираат и опстојуваат. Голема развновидност постои во пристапите на моделирање, почнувајќи од <em>прости</em> компараментални модели што претпоставуваат добро измешана популација поделена во неколку состојби (compartments) до <em>агетно-базирани</em> модели од големи размери што можат да симулираат движење на болест меѓу градови, континенти.</p>
+<p>Овие <em>прости</em> модели ни дозволуваат аналитички да објаснуваме како примарните механизми влијаат на важни настани, како на пример дали епидемија ќе настане, колку долго би траела, која би била смрттната стапка, колку голема би била. Да ги добиеме овие едноставани објаснувања, компензираме многу на точноста што тоа што ги изоставаме сите секундарни ефекти (возраст на население, како вирусот се шири и слично). На другата страна пак, <em>комплексните</em> модели можеме да моделираме демографиски карактеристики, заедници, вакцни, карантини (lockdowns). Овие модели имаат многу поголема предвидувачка моќ, но нивната комплексност може да не ни даде толку голем увид во проблемот.</p>
+<p>Првата фигура од книгата <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-319-50806-1"><em>“Mathematics of Epidemics on Networks”</em></a> многу добро ја доловува врската меѓу <strong>реалноста</strong>, <strong>комплексноста</strong> и <strong>увидот</strong> што моделот го спроведува. Фигурата покажува каде во ваква релација би стоеле едноставните компарементални модели (тие ние што ги користиме во проектот) - <strong>црвен круг  лево</strong>; комплексни модели засновани на мрежи - <strong>зелен круг средина</strong> и агетно-базирани модели засновани на податоци (data-driven) - <strong>сив модел - десно</strong>.</p>
+<div class="tip admonition">
+<p class="admonition-title">[Mathematics of Epidemics on Networks] Fig 1.1.</p>
+<p>Долниот лев регион не е до крај во жолто, т.е. е исклучен - тоа е минималната комплексност што е нужна за модел да долови одредено ниво на реалност. Увидот е лимитиран од самата комплекност на моделот (тоа што ни ја редуцира можноста да разбереме обични механизми) и реалноста (не можеме да учиме нешто за феномен што моделот не го вметнува во себе). Ако се движиме од светли (<em><strong>I</strong></em>) кон потемни региони (<em><strong>III</strong></em>) се зголемува и увидот што го добиваме. Очекуваме дека најголем увид би имале тогаш кога моделот содржи доволно компоненти да направи портрет на проблем (делумно реален) и во исто време е доволно комплексен да се разбере (делумно комплексен). Во реалноста, овие парадигми не би требало да се толку јасно одделни и дистинкцијата меѓу нив би требало да е помалку видлива.</p>
+</div>
+<div class="figure align-center" id="caricature-of-relation">
+<a class="reference internal image-reference" href="../_images/fig1.png"><img alt="../_images/fig1.png" src="../_images/fig1.png" style="width: 65%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Релација меѓу комплекноста, реалноста и увидот <a class="reference external" href="https://link.springer.com/chapter/10.1007%2F978-3-319-50806-1_1">[3]</a></span><a class="headerlink" href="#caricature-of-relation" title="Permalink to this image">¶</a></p>
+</div>
+<p>Како што предлага фигурата, моделите спроведуваат максимален увид во проблемот кога има доволно рамнотежа, таму каде <strong>реалноста</strong> и <strong>едноставноста</strong> се среќаваат. Каде оваа рамнотежа лежи зависи само од природата на проблемот и ние сме должни да го одгвориме тоа прашање.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zelenelez/book_test",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Вовед</a>
+    <a class='right-next' id="next-link" href="1_1_model_math.html" title="next page">Ширење на заразна болест</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kiril Zelenkovski<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Моделирање и симулација [ФИНКИ]
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

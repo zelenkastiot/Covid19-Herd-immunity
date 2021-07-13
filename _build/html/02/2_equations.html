@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIR модел &#8212; Имунитет на стадо</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/virus.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Програмирање на моделот" href="2_2_1_scenario.html" />
+    <link rel="prev" title="Ширење на заразна болест" href="../01/1_1_model_math.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/virus.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Имунитет на стадо</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Вовед
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Кодирање на SIR
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/1_modeling.html">
+   Моделирање на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/1_1_model_math.html">
+   Ширење на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   SIR модел
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="2_2_1_scenario.html">
+   Програмирање на модел
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_2_2_D.html">
+     Интерактивен график 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_2_3_gamma.html">
+     Интерактивен график 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_2_4_beta.html">
+     Интерактивен график 3
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Можни проширувања на SIR
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_states.html">
+   Транзиции на состојби
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_1.html">
+   SEIR модел
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/3_2.html">
+   SEIRD модел
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Временски зависни променливи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_main.html">
+   Листа параметри
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_1_quarantine.html">
+   Воведување карантин
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_2_r0.html">
+   Временски зависно R0
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_3_age.html">
+   Временски зависна смрттна стапка
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Erdős–Rényi мрежи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_networkModels.html">
+   Мрежи vs. равенки
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_1_er-networks.html">
+   Ширење на вируси на ER мрежи
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_2_contact-tracing.html">
+   Следење на контакти
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_3_epidemic-threshold.html">
+   Threshold на епидемија
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_4_power-law.html">
+   Алтернативна Power-law мрежа
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Имунитет на стадо
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_herd-explained.html">
+   Што е имунитет на стадо?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_1_herd-immunity.html">
+   Mean degree од симулации
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_2_prob-equations.html">
+   Процент на заразеност
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Дополнителни ресурси
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibs.html">
+   Референци
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intresting.html">
+   Интересни статии, видеа
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/zelenelez/book_test">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02/2_equations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zelenelez/book_test"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zelenelez/book_test/issues/new?title=Issue%20on%20page%20%2F02/2_equations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zelenelez/book_test/edit/main/02/2_equations.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Објаснување на дополнителните параметри
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Сите параметри со своите соодветни дефиниции
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   Диференцијална равенка
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sir">
+<h1>SIR модел<a class="headerlink" href="#sir" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Еден од најлесните начини да се моделира ваква болест (вирус) што доста често се користи во епидемолошки анализи е <strong>compartmental</strong> модел;  минималниот <strong>SIR-модел</strong> <a href="https://www.researchgate.net/publication/329950688_Analysis_of_SIR_epidemic_model_with_information_spreading_of_awareness">[1]</a>. Ваквиот модел ја дели популацијата на неколку оддели, на пример:</p>
+<ul class="simple">
+<li><p><strong>S</strong>useptible - подлежени на вирусот (што сеуште може да се инфицираат, „здрави“)</p></li>
+<li><p><strong>I</strong>nfected - заразени</p></li>
+<li><p><strong>R</strong>ecovered - оздравени (што се имаат инфицирано, не можат да се инфцираат потворно)</p></li>
+</ul>
+<p><strong>Пример Сценарио</strong> <br>
+Доколку имаме популација од <span class="math notranslate nohighlight">\(N=1000\)</span> (1000 жители) и со сигурност знаеме дека 400 од нив се инфирицрани во време <span class="math notranslate nohighlight">\(t\)</span> (пр. <span class="math notranslate nohighlight">\(t=7\)</span> дена откатко е започната епидемијата на болеста). Ова се обележува со <span class="math notranslate nohighlight">\(S(7)=400\)</span>. Овој <a class="reference external" href="https://mathworld.wolfram.com/SIRModel.html#:~:text=An%20SIR%20model%20is%20an,a%20closed%20population%20over%20time.">SIR-модел</a> ни дозволува, само со внесување на неколку иницијални параметри, да ги добиеме сите вредности за функциите:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S(t)\)</span> - здрави во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span> - инфицирани во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span> - оздравени во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+</ul>
+<div class="section" id="id1">
+<h2>Објаснување на дополнителните параметри<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Имаме нова заразна болест, болест <strong>X</strong>. За оваа болест, веројатнста заразена личност да ја пренесе болеста на здрава личност е 20%. Просечниот број луѓе со кои оваа личност контактира е 5 личности на ден. Односно, заразена личност се среќава со 5 личности и ја пренесува болеста на секој еден од нив со веројатност од 20%. Очекуваме оваа личност да заразува 1 личност на ден (20% <span class="math notranslate nohighlight">\(\cdot\)</span> 5 = 1). Ова е параметарот:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\beta\)</span> <strong>:</strong> очекуваниот број на луѓе на кои заразена личност ја пренесува болеста</p>
+</div></blockquote>
+<p>Сега можеме да заклучиме дека секоја личност во различен период се заразува, меѓутоа колку денови ја чува болеста и ја шири е параметар од нужно значење за моделирање на оваа болест. Ова е параметарот:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(D\)</span> <strong>:</strong> бројот на денови што личноста ја чува во себе и може да ја шири болеста</p>
+</div></blockquote>
+<p>Доколку овој параметар <span class="math notranslate nohighlight">\(D=7\)</span>, заразена личност шета наоколу во период од 7 дена ширејќи ја заразната болест, и инфицира 1 друга личност на ден (бидејќи <span class="math notranslate nohighlight">\(\beta =1\)</span>). Значи окечуваме заразена личност да ја пренесе болеста на <span class="math notranslate nohighlight">\(1\cdot7\)</span> (1 личност на ден во период од 7 дена) <span class="math notranslate nohighlight">\(=7\)</span> други луѓе. Ова е <em>основниот репродусибилен број (basic reproduction number)</em> претставен со интиутивна формула:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(R_{0}=\beta \cdot D\)</span> <strong>:</strong> вкупниот број на луѓе кои една личност заразува</p>
+</div></blockquote>
+<p>Последниот параметар кој ќе го користеме во моделирање на заразна болест е <span class="math notranslate nohighlight">\(\gamma\)</span>, кој е реципрочната вредност на <span class="math notranslate nohighlight">\(D\)</span>. Ако <span class="math notranslate nohighlight">\(D\)</span> е бројот на заразени личности во ден, ова е бројот на заразени што оздравуваат во ден и се преставува со формулата:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\gamma= \frac{1}{D}\)</span> <strong>:</strong> рата на заздравување, број на заразени личности што заздравуваат на ден</p>
+</div></blockquote>
+<div class="section" id="id2">
+<h3>Сите параметри со своите соодветни дефиниции<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span><strong>:</strong> вкупна популација</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(t)\)</span><strong>:</strong> здрави во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span><strong>:</strong> инфицирани во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span><strong>:</strong> оздравени во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span><strong>:</strong> очекуваниот број на луѓе на кои заразена личност ја пренесува болеста</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span><strong>:</strong> бројот на денови што личноста ја чува во себе и може да ја шири болеста</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span><strong>:</strong> бројот на заразени личности што заздравуваат на ден (<span class="math notranslate nohighlight">\(\gamma= \frac{1}{D}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{0}\)</span><strong>:</strong> вкупниот број на луѓе кој една личност заразува (<span class="math notranslate nohighlight">\(R_{0}=\beta \cdot D\)</span>)</p></li>
+</ul>
+<p>Сега сакаме бројот на инфицирани, подлежени и оздравени за сите денови, само од параметрите <span class="math notranslate nohighlight">\(\beta\)</span>, <span class="math notranslate nohighlight">\(\gamma\)</span> и <span class="math notranslate nohighlight">\(N\)</span>. Сега, тешко е да се добие директна формула за <span class="math notranslate nohighlight">\(S(t)\)</span>, <span class="math notranslate nohighlight">\(I(t)\)</span> и <span class="math notranslate nohighlight">\(R(t)\)</span>. Меѓутоа, далеку поедноставно е да се опише <strong>дневната промена</strong> од <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(I\)</span> и <span class="math notranslate nohighlight">\(R\)</span>, што е бројот на подлежни/инфицирани/оздравени промени од конкретните податоци.</p>
+<p>Повторно, ќе ги образложиме формулите преку пример:<br><br>
+<strong>Пример Сценарио</strong> <br>
+Моментално сме на ден t по започнување на епидемијата на болест X. Повторно нека, очекуваниот број на луѓе што една инфицирана личност може да ги зарази е 1 (<span class="math notranslate nohighlight">\(\beta=1\)</span>) и бројот на денови што една инфицирана личност може да го шири вирусот е 7 (<span class="math notranslate nohighlight">\(\gamma=1/7\)</span> и <span class="math notranslate nohighlight">\(D=7\)</span>).</p>
+<p>Да речеме дека на ден t, вкупната популација е 100 (<span class="math notranslate nohighlight">\(N=100\)</span>), 60 луѓе се заразени (<span class="math notranslate nohighlight">\(I(t)=60\)</span>) и 30 луѓе се сеуште подлежни (односно <span class="math notranslate nohighlight">\(S(t)=30\)</span> и <span class="math notranslate nohighlight">\(R(t)=100-60-30=10\)</span>). Имајќи се во предвид како се <strong>менуваат</strong> <span class="math notranslate nohighlight">\(S(t)\)</span>, <span class="math notranslate nohighlight">\(I(t)\)</span> и <span class="math notranslate nohighlight">\(R(t)\)</span> наредниот ден?</p>
+<p>Имаме 60 заразени луѓе. Секој еден од нив заразува 1 личност на ден (тоа е параметарот <span class="math notranslate nohighlight">\(\beta\)</span>). Но, само 30%=30/100 од луѓето што тие заразени личности ги среќаваат се сеуште подлежни и може да бидат инфицирани (тоа е вредноста добиена од <span class="math notranslate nohighlight">\(\frac{S(t)}{N}\)</span>). Тие инфицираат 60<span class="math notranslate nohighlight">\(\cdot\)</span>1<span class="math notranslate nohighlight">\(\cdot\)</span>30/100=18 луѓе (60 заразени што на просек заразуваат 1 друг човек на ден, меѓутоа само 30 од вкупно 100 луѓе сеуште се подлежни на вирусот, така што тие не заразуваат 60<span class="math notranslate nohighlight">\(\cdot\)</span>1 луѓе, туку само тие 30%, односно 60<span class="math notranslate nohighlight">\(\cdot\)</span>1<span class="math notranslate nohighlight">\(\cdot\)</span>30/100=18 луѓе). Заклучно, 18 луѓе од тие што се подлежни на вирусот се заразуваат, од каде <span class="math notranslate nohighlight">\(S(t)\)</span> се менува минус 18. Вклучувајќи ги сите параметри, доаѓаме до првата формула:</p>
+<p>Промената на <span class="math notranslate nohighlight">\(S(t)\)</span> до наредниот ден = <span class="math notranslate nohighlight">\(-\beta\cdot I(t)\cdot \frac{S(t)}{N}\)</span></p>
+<p>Од калкулус сме запознаени дека терминот <strong>временска промена на функцијата</strong> е всушноост <strong>извод од функција</strong> (derivative), <span class="math notranslate nohighlight">\(S(t)\)</span> = изводот <span class="math notranslate nohighlight">\(S'(t) = \frac{dS}{dt}\)</span>. Откако ги изведуваме и добиваме сите изводи <span class="math notranslate nohighlight">\(S'(t), I'(t)\)</span> и <span class="math notranslate nohighlight">\(R'(t)\)</span>, можеме да ги пресметаме вредностите за <span class="math notranslate nohighlight">\(S(t), I(t), R(t)\)</span> за секој ден.</p>
+<p><span class="math notranslate nohighlight">\(S'(t)=-\beta\cdot I(t) \cdot \frac{S(t)}{N}\)</span></p>
+<p>Сега, како оваа бројка на заразени се менува? Тоа е едноставно: Има некои нови заразени, бројка која сега видовме како се менува, т.е. точниот број што <em>заминуваат</em> од <span class="math notranslate nohighlight">\(S(t)\)</span> и се <em>додаваат</em> во <span class="math notranslate nohighlight">\(I(t)\)</span>. Повторно во сценариото, имаме 18 заразени и знаеме со сигурност дека формулата ќе биде слична на: <span class="math notranslate nohighlight">\(I'(t)=+\beta\cdot I(t)\cdot \frac{S(t)}{N}\)</span> (можеме да го отфрлиме плусот “+”, го користиме за да се покаже дека имаме онолкава добивка колку што <span class="math notranslate nohighlight">\(S(t)\)</span> има загуба, затоа само го менуваме знакот).</p>
+<p>Останува: бројот на луѓе кои оздравуваат. За ова го имаме параметарот <span class="math notranslate nohighlight">\(\gamma\)</span>, т.е. <em>делот од инфицирани што заздравува дневно</em>, токму она што ни треба.</p>
+<p>Имаме 60 заразени и <span class="math notranslate nohighlight">\(\gamma = 1/3\)</span>, односно една третина од 60 заздравува. Тоа е <span class="math notranslate nohighlight">\(1/3 \cdot 60 = 20\)</span>. Конечно ја добиваме и следниот извод:</p>
+<p><span class="math notranslate nohighlight">\(I'(t)=\beta\cdot I(t) \cdot \frac{S(t)}{N} - \gamma \cdot I(t)\)</span></p>
+<p>Првиот дел од изводот е бројот на ново-заразени од подлежни, вториот дел е бројот на луѓе кои оздравуваат.</p>
+<p>Конечно доаѓаме до последната формула: промената на заздравени луѓе. Што повторно брзо се пресметува, точно оние 20 кои ги пресметавме, нема луѓе кои заминуваат од групата на заздравени луѓе. Откако ќе заздрават, остануваат имуни на болеста:</p>
+<p><span class="math notranslate nohighlight">\(R'(t)=\gamma \cdot I(t)\)</span></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Диференцијална равенка<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Ги изведовме и објаснивме сите формули кои ни се потребни за да едноставно да моделираме една заразна болест. Нивниот најчест запис:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dS}{dt} &amp;= -\beta \cdot I \cdot \frac{S}{N} \\
+\frac{dI}{dt} &amp;= \beta \cdot I \cdot \frac{S}{N} - \gamma \cdot I \\
+\frac{dR}{dt} &amp;= \gamma \cdot I
+\end{align*}\]</div>
+<p>Ваквите равенки се нарекуваат <strong>едноставни диференцијални равенки</strong> (Ordinary Differential Equations - ODEs). Со користење на истите можеме да ја опишеме <em>промената</em> во бројот на подлежни, заразени како и оздравени. За среќа, директно од овие равенки можеме да ги добиеме: <span class="math notranslate nohighlight">\(S(t), I(t), R(t)\)</span>. Дополнително ни олеснува тоа што со минимално познавање на изводи и <strong>Python</strong> можеме да ги решаваме равенките/моделираме податоците многу брзо.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zelenelez/book_test",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../01/1_1_model_math.html" title="previous page">Ширење на заразна болест</a>
+    <a class='right-next' id="next-link" href="2_2_1_scenario.html" title="next page">Програмирање на моделот</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kiril Zelenkovski<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Моделирање и симулација [ФИНКИ]
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

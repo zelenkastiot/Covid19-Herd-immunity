@@ -1,0 +1,73 @@
+- file: intro
+  numbered: false
+  
+- part: "Кодирање на SIR"
+  chapters:
+  - file: 01/1_modeling
+    title: "Моделирање на заразна болест" 
+  - file: 01/1_1_model_math
+    title: "Ширење на заразна болест" 
+  - file: 02/2_equations
+    title: "SIR модел"
+  - file: 02/2_2_1_scenario
+    title: "Програмирање на модел"
+    sections:
+    - file: 02/2_2_2_D
+      title: "Интерактивен график 1"
+    - file: 02/2_2_3_gamma
+      title: "Интерактивен график 2"
+    - file: 02/2_2_4_beta
+      title: "Интерактивен график 3"
+
+- part: "Можни проширувања на SIR" 
+  chapters: 
+  - file: 03/3_states
+    title: "Транзиции на состојби"
+  - file: 03/3_1
+    title: "SEIR модел"
+  - file: 03/3_2
+    title: "SEIRD модел"
+  
+- part: "Временски зависни променливи"
+  chapters: 
+  - file: 04/4_main
+    title: "Листа параметри"
+  - file: 04/4_1_quarantine
+    title: "Воведување карантин"
+  - file: 04/4_2_r0
+    title: "Временски зависно R0"
+  - file: 04/4_3_age
+    title: "Временски зависна смрттна стапка"
+    
+  
+  
+- part: "Erdős–Rényi мрежи"
+  chapters: 
+  - file: 05/5_networkModels
+    title: "Мрежи vs. равенки"
+  - file: 05/5_1_er-networks
+    title: "Ширење на вируси на ER мрежи"  
+  - file: 05/5_2_contact-tracing
+    title: "Следење на контакти"
+  - file: 05/5_3_epidemic-threshold
+    title: "Threshold на епидемија"
+  - file: 05/5_4_power-law
+    title: " Алтернативна Power-law мрежа"
+
+- part: "Имунитет на стадо"
+  chapters: 
+  - file: 06/6_herd-explained
+    title: "Што е имунитет на стадо?"
+  - file: 06/6_1_herd-immunity
+    title: "Mean degree од симулации"
+  - file: 06/6_2_prob-equations
+    title: "Процент на заразеност"
+
+- part: "Дополнителни ресурси"
+  chapters:
+  - file: bibs 
+    title: "Референци"
+  - file: intresting
+    title: "Интересни статии, видеа"
+  - url: https://github.com/zelenelez/book_test
+    title: "GitHub repository" 

@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Транзиции на состојби &#8212; Имунитет на стадо</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/virus.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SEIR модел" href="3_1.html" />
+    <link rel="prev" title="Интерактивен график параметар \(\beta\)" href="../02/2_2_4_beta.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/virus.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Имунитет на стадо</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Вовед
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Кодирање на SIR
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/1_modeling.html">
+   Моделирање на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/1_1_model_math.html">
+   Ширење на заразна болест
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02/2_equations.html">
+   SIR модел
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02/2_2_1_scenario.html">
+   Програмирање на модел
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_2_D.html">
+     Интерактивен график 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_3_gamma.html">
+     Интерактивен график 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/2_2_4_beta.html">
+     Интерактивен график 3
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Можни проширувања на SIR
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Транзиции на состојби
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_1.html">
+   SEIR модел
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_2.html">
+   SEIRD модел
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Временски зависни променливи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_main.html">
+   Листа параметри
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_1_quarantine.html">
+   Воведување карантин
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_2_r0.html">
+   Временски зависно R0
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/4_3_age.html">
+   Временски зависна смрттна стапка
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Erdős–Rényi мрежи
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_networkModels.html">
+   Мрежи vs. равенки
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_1_er-networks.html">
+   Ширење на вируси на ER мрежи
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_2_contact-tracing.html">
+   Следење на контакти
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_3_epidemic-threshold.html">
+   Threshold на епидемија
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/5_4_power-law.html">
+   Алтернативна Power-law мрежа
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Имунитет на стадо
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_herd-explained.html">
+   Што е имунитет на стадо?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_1_herd-immunity.html">
+   Mean degree од симулации
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_2_prob-equations.html">
+   Процент на заразеност
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Дополнителни ресурси
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibs.html">
+   Референци
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intresting.html">
+   Интересни статии, видеа
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/zelenelez/book_test">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03/3_states.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zelenelez/book_test"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zelenelez/book_test/issues/new?title=Issue%20on%20page%20%2F03/3_states.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/zelenelez/book_test/edit/main/03/3_states.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zelenelez/book_test/main?urlpath=lab/tree/03/3_states.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/drive/1vq_Ll-xAgFfW-kkDin5WUucNtY09HUka#scrollTo=1dE2kHUFW7ju/github/zelenelez/book_test/blob/main/03/3_states.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Модели како транзиции на состојби
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>Транзиции на состојби<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Во претходната секција ги разгледувавме параметрите кои влегуваат во почетно моделирање на заразни болести. Во оваа секција ќе разгледуваме истиот модел но од различен - (по) визуелен агол, т.е. ќе ги разгледаме следните проширувања на основниот модел:</p>
+<ul class="simple">
+<li><p>Состојба <strong>“Починати”</strong> → <span class="math notranslate nohighlight">\(D(t)\)</span>, за индивидуи кои починале од заразата</p></li>
+<li><p>Состојба <strong>“Изложени”</strong> → <span class="math notranslate nohighlight">\(E(t)\)</span>, за индивидуи кои стаипле во контакт со заразната болест меѓутоа сеуште не се заразливи (познато и како SEIR модел)</p></li>
+<li><p>Временски зависни <span class="math notranslate nohighlight">\(R_0\)</span> вредности што ни овозможуваат да моделираме карантин, комплетни изолации и сл.</p></li>
+<li><p>Возрасно и ресурсно зависни стапки на смртност, што ни возможуваат да моделираме популации со многу млади/возрасни луѓе, преокупирани болници и сл.</p></li>
+</ul>
+<div class="section" id="id2">
+<h2>Модели како транзиции на состојби<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Краток преглед на променливите кои досега ги дефиниравме:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span><strong>:</strong> вкупна популација</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(t)\)</span><strong>:</strong> здрави во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span><strong>:</strong> инфицирани во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span><strong>:</strong> оздравени во време <span class="math notranslate nohighlight">\(t\)</span> од започнување на епидемијата</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span><strong>:</strong> очекуваниот број на луѓе на кои заразена личност ја пренесува болеста</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span><strong>:</strong> бројот на денови што личноста ја чува во себе и може да ја шири болеста</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span><strong>:</strong> бројот на заразени личности што заздравуваат на ден (<span class="math notranslate nohighlight">\(\gamma= \frac{1}{D}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{0}\)</span><strong>:</strong> вкупниот број на луѓе кој една личност заразува (<span class="math notranslate nohighlight">\(R_{0}=\beta \cdot D\)</span>)</p></li>
+</ul>
+<p>Основните диференцијални равенки:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dS}{dt} &amp;= -\beta \cdot I \cdot \frac{S}{N} \\
+\frac{dI}{dt} &amp;= \beta \cdot I \cdot \frac{S}{N} - \gamma \cdot I \\
+\frac{dR}{dt} &amp;= \gamma \cdot I
+\end{align*}\]</div>
+<p>Во изведувањето на равенките, интиутивно ги разгледавме формулите како насоки што ни кажуваат што ќе се случи со популацијата <em>следниот ден</em> (на пр., кога 10 луѓе се заразени (<span class="math notranslate nohighlight">\(I\)</span>) и времето потребно за оздравување е со рата <span class="math notranslate nohighlight">\(\frac{1}{5}\)</span> (<span class="math notranslate nohighlight">\(\gamma\)</span>), тогаш бројот на оздравени луѓе следниот ден треба да се зголеми за <span class="math notranslate nohighlight">\(\frac{1}{5}\cdot 10 = 2\)</span>).</p>
+<p>Сега нашето разбирање за овие равенки како насоки или транзиции од едена состојба S, I или R во друга ќе го потврдиме со следните анализи. Ова воведување на транизиции од една во друга состојба ќе ни озвозможи поголема прегледност при рабоотење со равенките кога ќе воведеме повеќе параметри.</p>
+<p>Состојби се вакви кругови:</p>
+<div class="figure align-center" id="signle-state">
+<a class="reference internal image-reference" href="../_images/Screenshot_1.png"><img alt="../_images/Screenshot_1.png" src="../_images/Screenshot_1.png" style="width: 18%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Единечна состојба S</span><a class="headerlink" href="#signle-state" title="Permalink to this image">¶</a></p>
+</div>
+<p>Од овие транзиции ги изведуваме следните равенки:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dS}{dt} &amp;= -\beta \cdot I \cdot \frac{S}{N} \\
+\frac{dE}{dt} &amp;= \beta \cdot I \cdot \frac{S}{N} - \delta \cdot E \\
+\frac{dI}{dt} &amp;= \delta \cdot E - \gamma \cdot I \\
+\frac{dR}{dt} &amp;= \gamma \cdot I
+\end{align*}\]</div>
+<p>Транзиции од една состојба во друга се претставени со стрелки, со следната нотација:</p>
+<div class="figure align-center" id="product-explained">
+<a class="reference internal image-reference" href="../_images/Screenshot_2.png"><img alt="../_images/Screenshot_2.png" src="../_images/Screenshot_2.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Визуелен приказ на производот од стапката, веројатноста, популацијата</span><a class="headerlink" href="#product-explained" title="Permalink to this image">¶</a></p>
+</div>
+<p>Од овие транзиции ги изведуваме следните равенки:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dS}{dt} &amp;= -\beta \cdot I \cdot \frac{S}{N} \\
+\frac{dE}{dt} &amp;= \beta \cdot I \cdot \frac{S}{N} - \delta \cdot E \\
+\frac{dI}{dt} &amp;= \delta \cdot E - \gamma \cdot I \\
+\frac{dR}{dt} &amp;= \gamma \cdot I
+\end{align*}\]</div>
+<p><b style='color: #d20b23'>Стапката</b> го претставува времето потребно за една транзиција, <b style='color: #5b96de'>веројатноста</b> е еднаква на веројатноста оваа транзиција да настане за една индивидуа и <b style='color: #7ed321'>популацијата</b> е групата на луѓе на кои се однесува транзицијата.</p>
+<br>
+<br>
+<p><strong>Пример сценарио</strong> <br>
+Разгледуваме една транзиција од Подлежни (<span class="math notranslate nohighlight">\(S\)</span>) во Заразени (<span class="math notranslate nohighlight">\(I\)</span>) во нашите SIR равенки, каде ни се дадени следните почетни параметри:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta = 2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(N=100\)</span> (10 зразени, 90 подлежни)</p></li>
+</ul>
+<p>Доколку <b style='color: #d20b23'>стапката</b> на пренесување на заразата е 1, како што заразувањата започнуваат веднаш; <b style='color: #7ed321'>популацијата</b> на која оваа транзиција се однесува е <span class="math notranslate nohighlight">\(2\cdot 10 = 20\)</span> индивидуи, секој еден од овие 10 заразени заразува уште 2 други подлежни; <b style='color: #5b96de'>веројатноста</b> е 90% (<span class="math notranslate nohighlight">\(\frac{90}{100}\)</span>) за подлежните да се заразат.</p>
+<div class="figure align-center" id="example-product">
+<a class="reference internal image-reference" href="../_images/Screenshot_3.png"><img alt="../_images/Screenshot_3.png" src="../_images/Screenshot_3.png" style="width: 55%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Визуелен приказ на пример од производ</span><a class="headerlink" href="#example-product" title="Permalink to this image">¶</a></p>
+</div>
+<p>Генерално доколку ги напишеме сите транзиции кои настануваат од нашите равенки за целиот модел (<span class="math notranslate nohighlight">\(I\rightarrow R\)</span>, каде <span class="math notranslate nohighlight">\(\gamma\)</span> е стапката веројатноста е 1 додека сите оздравуваат):</p>
+<div class="figure align-center" id="general-notation">
+<a class="reference internal image-reference" href="../_images/Screenshot_4.png"><img alt="../_images/Screenshot_4.png" src="../_images/Screenshot_4.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Генерален запис за сите транизиции за SIR модел</span><a class="headerlink" href="#general-notation" title="Permalink to this image">¶</a></p>
+</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dS}{dt} &amp;= -\beta \cdot I \cdot \frac{S}{N} \\
+\frac{dI}{dt} &amp;= \beta \cdot I \cdot \frac{S}{N} - \gamma \cdot I \\
+\frac{dR}{dt} &amp;= \gamma \cdot I
+\end{align*}\]</div>
+<br>
+<p>Можеме да заклучиме од последниот трансформатор, стрелките што покажуваат од една состојба во друга се додаваат во равенката; стрелките кои покажуваат надвор од една состојба се одземаат.</p>
+<br>
+<p>Сега и покрај ова моделирање на состојби како и моделите испрограмирани во <em>Python</em> ние сеуште сме далеку од моделирање на вистински податоци што кружат на интернет. Во оваа моментална состојба овој модел само ни овозможува да разгледаме во какви меѓусебни транзиции влегуваат одредени параметри и какво е нивното влијание преку време.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "zelenelez/book_test",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../02/2_2_4_beta.html" title="previous page">Интерактивен график параметар <span class="math notranslate nohighlight">\(\beta\)</span></a>
+    <a class='right-next' id="next-link" href="3_1.html" title="next page">SEIR модел</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kiril Zelenkovski<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Моделирање и симулација [ФИНКИ]
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
