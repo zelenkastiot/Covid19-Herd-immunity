@@ -30,7 +30,7 @@ launch_buttons:
   colab_url                 : "https://colab.research.google.com/drive/1vq_Ll-xAgFfW-kkDin5WUucNtY09HUka#scrollTo=1dE2kHUFW7ju"
 
 repository:
-  url                       : https://github.com/zelenelez/book_test 
+  url                       : https://github.com/zelenkastiot/Covid19-Herd-immunity
   branch                    : main  
 
 parse:
