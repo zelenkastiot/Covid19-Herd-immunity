@@ -263,7 +263,7 @@ print('Втора пандемија: останати подлежни, S(t)={s
 print('Mean degree на иницијална мрежа {kmean}'.format(kmean=kmean))
 print('Mean degree на останата мрежа {kmean:.2f}'.format(kmean=numpy.mean(list(dict(h.degree()).values()))))
 
-Ова можеме да го покажеме графички - иако воопшто не е научно корисно поради големиот број на јазли - со заговор за напредокот на болеста преку мрежата (инспирација за ваков приказ, [Simon Dobson](https://github.com/simoninireland/introduction-to-epidemics/blob/master/src/herd-finals.png))
+Ова можеме да го покажеме графички - иако воопшто не е научно корисно поради големиот број на јазли - со заговор за напредокот на болеста преку мрежата (инспирација за ваков приказ, [Симон Дабсон](https://github.com/simoninireland/introduction-to-epidemics/blob/master/src/herd-finals.png))
 
 (fig,axs) = plt.subplots(1, 3, figsize=(12, 5))
 
