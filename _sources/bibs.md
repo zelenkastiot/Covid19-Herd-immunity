@@ -14,7 +14,7 @@
 6. Vattay G. Predicting the ultimate outcome of the covid-19 outbreak in italy. arXiv preprint [arXiv:2003.07912.](https://arxiv.org/abs/2003.07912) 2020 Mar 17. 
 
 7. 
-https://github.com/henrifroese/infectious_disease_modelling/blob/master/app.py
+Пример dashboard: https://github.com/henrifroese/infectious_disease_modelling/blob/master/app.py
 
 8. John Hopkins dashboard - https://systems.jhu.edu/research/public-health/ncov/
 
@@ -22,3 +22,20 @@ https://github.com/henrifroese/infectious_disease_modelling/blob/master/app.py
 
 10. Italy lockdown article: 
 https://www.axios.com/italy-coronavirus-timeline-lockdown-deaths-cases-2adb0fc7-6ab5-4b7c-9a55-bc6897494dc6.html
+
+11. 
+
+12. 
+
+13. 
+
+14. 
+
+15. 
+
+16.
+
+17. Lajmanovich, A. and Yorke, J.A. (1976) A Deterministic Model for Gonorrhea in a Nonhomogenous Population. Mathematical Biosciences, 28, 221-236.
+https://doi.org/10.1016/0025-5564(76)90125-5
+
+18. 
