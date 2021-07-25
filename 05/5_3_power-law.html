@@ -53,6 +53,8 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/virus.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -233,8 +235,13 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../06/6_2_vaccines.html">
+   Моделирање на сценарија со вакцинација
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../06/6_3_distance.html">
-   Физичко дистанцирање
+   Моделирање на физичко дистанцирање
   </a>
  </li>
 </ul>
@@ -369,6 +376,30 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Контакт кај физички мрежи
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#powerlaw">
+   Powerlaw мрежи
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Градење на ваква мрежа
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -378,86 +409,96 @@
                 
   <div class="section" id="power-law">
 <h1>Алтернативна Power-law мрежа<a class="headerlink" href="#power-law" title="Permalink to this headline">¶</a></h1>
-<p><strong>Human contact networks</strong></p>
-<p><strong>Social structures</strong></p>
-<p><strong>Powerlaw networks</strong></p>
-<p><strong>Building a contact network</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">networkx</span>
-<span class="kn">import</span> <span class="nn">epyc</span>
-<span class="kn">import</span> <span class="nn">epydemic</span>
-<span class="kn">import</span> <span class="nn">pandas</span>
-<span class="kn">import</span> <span class="nn">mpmath</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;png&#39;
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
-<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
+<p>Бидејќи сега знаеме дека структурата на мрежата може да влијае на начинот на однесување на болеста, очигледното прашање е точно каков е овој ефект. Поврзано прашање, нешто помалку апстрактно, е како овој ефект се манифестира на пореален модел на човечки контакти. Ако можеме да развиеме модел што имитира „реална“ социјална ситуација, можеме да се приближиме до тоа како може да се однесуваат вистинските епидемии.</p>
+<p>За изненадување, моделирањето човечки контакти е доста тешко. Навистина, сè уште нема научен консензус за тоа какви видови мрежи се „најдобриот“ модел - не само затоа што има многу различни социјални структури за кои треба да се смета. Градот не е само големо село: начините на кои луѓето се мешаат суштински се менуваат како што се зголемуваат географските и популационите размери, кога веќе не ги познавате соседите и кога патувате и мешате на пошироко подрачје. Дури и толку едноставна реченица имплицира многу математичка сложеност. Помалку мешање има во мал обем со соседите, но повеќе мешање на подолги растојанија со несоседите - и ова е пред да размислиме како мрежите на пријателство се меѓусебно поврзани и ефектите од контрамерките на болеста како што се социјалното дистанцирање што одеднаш станаа одлика на модерната живот.</p>
+<p>Доволно е да се каже дека студијата за мрежи за контакт е сè уште активно поле на истражување, спроведено експериментално со проучување на реални социјални мрежи како што се изложени на социјалните медиуми и теоретски со проучување на мрежи со тополошки структури кои се обидуваат да рефлектираат како луѓето комуницираат.</p>
+<p>Додека „вистинскиот“ модел сè уште не е познат, сепак можеме да напредуваме користејќи го (што тврдиме дека е) подобар модел од едноставната мрежа за ER и да истражиме какви ефекти има.</p>
+<div class="section" id="id1">
+<h2>Контакт кај физички мрежи<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Човечките мрежи за контакт треба да ги моделираат структурите што всушност ги наоѓаме во човечките социјални структури. Овие структури се опширно проучувани и тие покажуваат огромна варијација - далеку повеќе отколку што наоѓаме во пример, структурата на мрежите во природните физички и биолошки системи. Ова е можеби заради разновидноста на културните фактори кои ги движат социјалните структури или можеби затоа што многу такви мрежи се дизајнирани за специфични цели, наместо едноставно да се развиваат по случаен избор.</p>
+<p>Еден заеднички фактор е дека степенот на дистрибуција на контактната мрежа не е нормален (во математичка смисла) како оној на мрежата ЕР. Наместо бројот на контакти да се соберат околу одредена средина, имаме тенденција да набудуваме мал број на јазли кои се многу <strong>високо поврзани</strong> - далеку повеќе поврзани отколку што е можно во мрежата на ЕР. Овие луѓе понекогаш се нарекуваат <strong>хабови (hubs)</strong>. Во моделирањето на болести, ови т.н. супер-распрснувачите може да бидат подобар израз: лица кои, доколку се заразат, потенцијално можат да заразат огромен број други. Ова има импликации врз контрамерките и вакцинацијата, имунитет на стадо и сл.</p>
+<p>Контактните мрежи честопати ги хиперболизираат факторите кои се присутни во основната математика. Изберете јазол во мрежата по случаен избор и погледнете ги неговите соседи: какви би очекувале да бидат нивните степени? Излегува дека степени на соседи на јазоли избрани по случаен избор имаат тенденција да бидат поголеми од оние на самиот јазол. Тоа е затоа што има повеќе можности за поврзување со јазол кој има висок степен отколку со оној со низок степен (Pareto Principle). Ова е <a class="reference external" href="https://nbviewer.jupyter.org/github/zelenkastiot/FCSE-Methodology-in-Research/blob/master/Experiment%20.ipynb">интересн експеримент</a> што го имам спроведено за слична тематика, каде испитував на рандом синџири каква е дистрибуцијата на нивната должина.</p>
+<p>Овој сличен феномен како тој на Парето, во социјална средина значи дека вашите пријатели се обично попопуларни од вас: тие, во просек, имаат повеќе пријатели од просекот. Ова важи за секој јазол избран по случаен избор - и така, парадоксално, додека твоите пријатели се во просек попопуларни од тебе, нивните пријатели исто така се просечно попопуларни од нив. Јасно е дека ова не може да важи за сите во истата мрежа и е уште еден пример за тоа како просечноста може да прикрие важни детали.</p>
+<p>Потоа, тука е прашањето за случајност. Едно нешто што е очигледно во врска со мрежите за пријателство е дека тие имаат тенденција да не бидат случајни. Ако имате двајца пријатели, тие веројатно ќе бидат пријатели едни на други - иако не мора, бидејќи луѓето честопати имаат неповрзани под-групи на пријатели. Математички, ова се манифестира како <strong>кластери</strong> во мрежата кои се многу повеќе поврзани, што би се очекувало во случајно поврзана мрежа: всушност, зачудувачки е малку веројатно таквите структури да се појават во случајно изградена мрежа. Справувањето со ова групирање е математички многу предизвикувачко и претставува една од границите на тековните истражувања. Подобрите модели ќе го подобрат начинот на кој ги анализираме социјалните мрежи и ќе го подобриме потценувањето на процесите (како болести) што работат над нив.</p>
 </div>
+<div class="section" id="powerlaw">
+<h2>Powerlaw мрежи<a class="headerlink" href="#powerlaw" title="Permalink to this headline">¶</a></h2>
+<p>Значи, мрежите за контакт имаат некои луѓе кои имаат масовно повеќе контакти од другите, или од просекот. Ова е пренесено во крајност на социјалните медиуми, каде што релативно мал број јавни и славни личности имаат милиони „пријатели“. И покрај тоа што овој поим за „пријателство“ е различен од „вистинското“ пријателство, ние гледаме слични ефекти во физичките мрежи за контакт: мрежите што фаќаат како луѓето комуницираат во реалниот свет. Ова се случува на индивидуално социјално ниво, каде што некои луѓе се природни (или принудени) осамени, додека други се социјални пеперутки. Тоа се случува и преку фактори како што се работата, каде што некои луѓе - поштенски работници, касиери во продавници, возачи на автобуси, наставници - комуницираат со многу повеќе луѓе, и далеку поблиску, отколку со оние на други работни места.</p>
+<p>Каква дистрибуција на степени имаат ваквите мрежи? Тие често го следат <strong>степенскиот закон (power law)</strong>, каде што веројатноста јазолот да има одреден степен наликува на <span class="math notranslate nohighlight">\(p_k \propto k^{-\alpha} \)</span>, за одреден степен <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span>. Овие <strong>power law мрежи</strong> ги опишуваат структурите на мрежите во збунувачки опсег на апликации: најпознато, тие ја опишуваат структурата на основното инженерство на Интернет и бројот на врски до веб-страници. Овие мрежи се нарекуваат и <strong>БА</strong> мрежи според нивните откривачи, и <strong>мрежи без размер (scale-free)</strong> бидејќи нивните големи и мали структури изгледаат исто.</p>
+<p>Power law мрежи не се сосема соодветни за контактните мрежи, бидејќи тие можат да создадат јазли со навистина, навистина високи степени: премногу високи за да се појават во човечки социјални ситуации.</p>
+<p>Но, за среќа има варијација на оваа идеја, проучена од Newman, Watts и Strogatz <a class="reference external" href="https://www.pnas.org/content/99/suppl_1/2566">[15]</a> и се покажа дека е подобро. Во овие мрежи дистрибуцијата на степенот на моќ-закон е „отсечена“ (cutoff) пред да може да стане преголема, во суштина поставувајќи таван на бројот на контакти што може да ги има една индивидуа. Изненадувачки, овие мрежи се познати како <strong>powerlaw cutoff мрежи</strong>.</p>
 </div>
-</div>
+<div class="section" id="id2">
+<h2>Градење на ваква мрежа<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Градењето на ваква контактна мрежа веќе го имаше како готов формат, но јас се обидов да имитрам една тетратка што ја најдов. Идејата е оваа изградба на мрежа да резултира со мрежа каде што јазлите имаат точна дистрибуција на степен. Со други зборови, јазлите во мрежата со степен <span class="math notranslate nohighlight">\(k\)</span> се појавуваат во дел предвидена со дистрибуцијата на степенот.</p>
+<p>Кога конструиравме EР мрежа, опишавме алгоритам кој, кога се следи, произведува мрежа со посакувана дистрибуција. Потребен ни е различен алгоритам за ракување со различни топологии. Излегува дека постои многу општ алгоритам, наречен <strong>конфигурациски модел (configuration model)</strong>, што може да конструира случајна мрежа со која било дистрибуција на степени.</p>
+<p>За да се изгради мрежа со големина <span class="math notranslate nohighlight">\(N\)</span>, конфигурацискиот модел зема список со <span class="math notranslate nohighlight">\(N\)</span> броеви, секој опишува степен на јазол. Создава јазли со овие степени и ги поврзува нивните рабови случајно. Ако можеме да ја креираме низата степени што ја сакаме од дистрибуцијата на степени, можеме да го користиме моделот за конфигурација за да изградиме случајна мрежа со јазли што ги имаат тие степени.</p>
+<p>Ние дефинираме функција која, на даден степен <span class="math notranslate nohighlight">\(k\)</span>, ја враќа веројатноста <span class="math notranslate nohighlight">\(p_k\)</span> на јазолот со тој степен да се појави во мрежата. Потоа дефинираме друга функција на која и ја обезбедуваме оваа функција какво влез, заедно со бројот на јазли што ги сакаме и која создава случајна мрежа. Постојано се избира случаен степен и потоа се избира случаен број помеѓу 0 и 1. Ако овој втор број е помал од веројатноста на јазол со настанување на тој степен, тој го додава степенот на низата; во спротивно, тој го повторува процесот за друг степен. Ова продолжува сè додека не имаме степени на <span class="math notranslate nohighlight">\(N\)</span> јазол, а потоа можеме да преминеме на моделот за конфигурација за да се поврземе заедно.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generateFrom</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">maxdeg</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="c1"># construct degrees according to the distribution given</span>
-    <span class="c1"># by the model function</span>
+    <span class="c1"># конструирај степени согласно со дистрибуцијата дадена </span>
+    <span class="c1"># од функцијата модел p()</span>
     <span class="n">rng</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
     <span class="n">ns</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="c1"># draw a random degree</span>
+            <span class="c1"># цртај рандом степен </span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxdeg</span><span class="p">)</span>
             
-            <span class="c1"># do we include a node with this degree?</span>
+            <span class="c1"># дали го додаваме овој степен на овој јазел? </span>
             <span class="k">if</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
-                <span class="c1"># yes, add it to the sequence; otherwise,</span>
-                <span class="c1"># draw again</span>
+                <span class="c1"># да, додади го во секвенцата; инаку,</span>
+                <span class="c1"># цртај повторно</span>
                 <span class="n">ns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
                 <span class="n">t</span> <span class="o">+=</span> <span class="n">k</span>
                 <span class="k">break</span>
 
-    <span class="c1"># the final sequence of degrees has to sum to an even</span>
-    <span class="c1"># number, as each edge has two endpoints</span>
-    <span class="c1"># if the sequence is odd, remove an element and draw</span>
-    <span class="c1"># another from the distribution, repeating until the</span>
-    <span class="c1"># overall sequence is even</span>
+    <span class="c1"># последната низа на степени треба да се сумира на еднаквост</span>
+    <span class="c1"># број, бидејќи секој раб има две крајни точки</span>
+    <span class="c1"># ако низата е непарна, отстранете елемент и нацртајте</span>
+    <span class="c1"># друг од дистрибуцијата, повторувајќи сè до</span>
+    <span class="c1"># целокупната низа е рамномерна</span>
     <span class="k">while</span> <span class="n">t</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># pick a node at random</span>
+        <span class="c1"># бирај јазол случајно </span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="c1"># remove it from the sequence and from the total</span>
+        <span class="c1"># острани го од секвенцата и од total</span>
         <span class="n">t</span> <span class="o">-=</span> <span class="n">ns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">del</span> <span class="n">ns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             
-        <span class="c1"># choose a new node to replace the one we removed</span>
+        <span class="c1"># избери јазол кој го заменува отстранетиот </span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="c1"># draw a new degree from the distribution</span>
+            <span class="c1"># исцртај нов степен од дистрибуцијата </span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxdeg</span><span class="p">)</span>
             
-            <span class="c1"># do we include a node with this degree?</span>
+            <span class="c1"># дали да вклучиме јазол со овој степен? </span>
             <span class="k">if</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
-                <span class="c1"># yes, add it to the sequence; otherwise,</span>
-                <span class="c1"># draw again</span>
+                <span class="c1"># да, додади го во секвенцата; инаку,</span>
+                <span class="c1"># цртај повторно</span>
                 <span class="n">ns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
                 <span class="n">t</span> <span class="o">+=</span> <span class="n">k</span>
                 <span class="k">break</span>
 
-    <span class="c1"># populate the network using the configuration</span>
-    <span class="c1"># model with the given degree distribution</span>
+    <span class="c1"># населете ја мрежата користејќи ја конфигурацијата</span>
+    <span class="c1"># модел со дадената дистрибуција на степен</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">configuration_model</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span>
                                      <span class="n">create_using</span><span class="o">=</span><span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">g</span>
 </pre></div>
 </div>
 </div>
+</div>
+<p>Сега треба да ја опишеме дистрибуцијата на законот за напојување со намалување на степенот. Математички, веројатноста да наидете на јазол од степен <span class="math notranslate nohighlight">\(k\)</span> под оваа дистрибуција е дадена со:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    p_k \propto k ^ {- \alpha} e ^ {- k / \kappa}
+\end{equation*}\]</div>
+<p>Бидејќи дистрибуцијата е опишана со два параметра - <strong>степенот</strong> <span class="math notranslate nohighlight">\(\alpha\)</span> и <strong>cutoff</strong> <span class="math notranslate nohighlight">\(\kappa\)</span> - ние дефинираме функција што ги зема овие два параметра и враќа функција што враќа <span class="math notranslate nohighlight">\(p_k\)</span> за кој било степен <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">Појаснување</p>
+<p>Бројот <code>C</code> во оваа функција е само нормализирана константа потребна за да се направат веројатностите за различните степени збир до 1, така што тие формираат валидна дистрибуција на веројатност.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -470,28 +511,29 @@
 </div>
 </div>
 </div>
+<p>Потоа можеме да ја покажеме дистрибуцијата на степенот што резултира, со повторно создавање мрежа и потоа цртање на хистограм на степени на јазли.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a small sample network</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># мала мрежа + параметри</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">cutoff</span> <span class="o">=</span> <span class="mi">40</span>
 
-<span class="c1"># generate the network from the parameters describing the</span>
-<span class="c1"># degree distribution</span>
+<span class="c1"># генерирање на мрежата од параметрите што ги опишуваат</span>
+<span class="c1"># дистрибуција на степени</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">generateFrom</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">makePowerlawWithCutoff</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
-<span class="c1"># draw the degree distribution</span>
+<span class="c1"># исцртај ја степенската дистрибуција</span>
 <span class="n">ks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">networkx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">ks</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">ks</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Алтернативна Powerlaw мрежа; degree distribution ($N = </span><span class="si">{n}</span><span class="s1">, </span><span class="se">\\</span><span class="s1">alpha = </span><span class="si">{e}</span><span class="s1">, </span><span class="se">\\</span><span class="s1">kappa = </span><span class="si">{k}</span><span class="s1">$)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">cutoff</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$k$&#39;</span><span class="p">)</span>
@@ -501,8 +543,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5_3_power-law_9_0.png" src="../_images/5_3_power-law_9_0.png" />
+<img alt="../_images/5_3_power-law_15_0.png" src="../_images/5_3_power-law_15_0.png" />
 </div>
+</div>
+<p>Може да се забележи дека бројот на јазли паѓа експоненцијално се додека не го погоди просекот (40), по што станува навистина редок: има многу малку јазли со степени поголеми од вредноста на просекот.</p>
 </div>
 </div>
 
