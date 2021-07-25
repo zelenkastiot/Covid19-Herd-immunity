@@ -1,4 +1,6 @@
-# Физичко дистанцирање
+# Моделирање на физичко дистанцирање
+
+!conda list epydemic
 
 import networkx
 import epyc
@@ -179,13 +181,6 @@ plt.savefig('physical-distancing.png')
 _ = plt.show()
 
 
-
-# from https://nbviewer.jupyter.org/gist/minrk/4470122
-def pxlocal(line, cell):
-    ip = get_ipython()
-    ip.run_cell_magic("px", line, cell)
-    ip.run_cell(cell)
-get_ipython().register_magic_function(pxlocal, "cell")
 
 class MonitoredSIR(epydemic.SIR, epydemic.Monitor):
  

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Физичко дистанцирање &#8212; Имунитет на стадо</title>
+    <title>Моделирање на физичко дистанцирање &#8212; Имунитет на стадо</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Референци" href="../bibs.html" />
-    <link rel="prev" title="Ширење на повторувачки епидемии" href="6_1_herd-immunity.html" />
+    <link rel="prev" title="Моделирање на сценарија со вакцинација" href="6_2_vaccines.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -232,9 +232,14 @@
    Ширење на повторувачки епидемии
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_2_vaccines.html">
+   Моделирање на сценарија со вакцинација
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Физичко дистанцирање
+   Моделирање на физичко дистанцирање
   </a>
  </li>
 </ul>
@@ -377,7 +382,14 @@
               <div>
                 
   <div class="section" id="id1">
-<h1>Физичко дистанцирање<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>Моделирање на физичко дистанцирање<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda list epydemic
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span>
@@ -549,8 +561,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean family size of 4.07 (range 1-10)
-Most connected individual has 63 contacts
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean family size of 4.19 (range 1-11)
+Most connected individual has 91 contacts
 </pre></div>
 </div>
 </div>
@@ -607,19 +619,7 @@ Most connected individual has 63 contacts
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6_3_distance_9_0.png" src="../_images/6_3_distance_9_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from https://nbviewer.jupyter.org/gist/minrk/4470122</span>
-<span class="k">def</span> <span class="nf">pxlocal</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">cell</span><span class="p">):</span>
-    <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
-    <span class="n">ip</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s2">&quot;px&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-    <span class="n">ip</span><span class="o">.</span><span class="n">run_cell</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
-<span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">register_magic_function</span><span class="p">(</span><span class="n">pxlocal</span><span class="p">,</span> <span class="s2">&quot;cell&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
+<img alt="../_images/6_3_distance_10_0.png" src="../_images/6_3_distance_10_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -836,7 +836,7 @@ Most connected individual has 63 contacts
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="6_1_herd-immunity.html" title="previous page">Ширење на повторувачки епидемии</a>
+    <a class='left-prev' id="prev-link" href="6_2_vaccines.html" title="previous page">Моделирање на сценарија со вакцинација</a>
     <a class='right-next' id="next-link" href="../bibs.html" title="next page">Референци</a>
 
     </div>
