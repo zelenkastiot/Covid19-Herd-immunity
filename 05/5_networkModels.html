@@ -423,7 +423,7 @@
 <p>Еден начин за да се реши маната (претпоставката) на SIR моделите, воедно и прашањето на помалку конекции е користејќи <strong>мрежи</strong>.</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Често се користи во литератури место мрежи како синоним се користи и терминот <strong>граф (graph)</strong> Разликата меѓу термините е минимална, според следниот <a class="reference external" href="https://bence.ferdinandy.com/2018/05/27/whats-the-difference-between-a-graph-and-a-network/">извор</a>, не ни постои разлика. Граф доаѓа со поформална дефиниција додека мрежи повеќе може да се користат не-математички,</p>
+<p>Често се користи во литератури место мрежи како синоним се користи и терминот <strong>граф (graph)</strong> Разликата меѓу термините е минимална, според следниот <a class="reference external" href="https://bence.ferdinandy.com/2018/05/27/whats-the-difference-between-a-graph-and-a-network/">извор</a>, не ни постои разлика. Граф доаѓа со поформална дефиниција додека мрежи повеќе може да се користат не-математички.</p>
 </div>
 <p><strong>Мрежа</strong> е едноставно колекција на <strong>темиња</strong> поврзани со <strong>рабови</strong>. Географска карта е добар пример за мрежа: темињата се градовите, додека рабовите (кои ги поврзуваат крстосниците на градовите заедно) се сегменти на патишта. Ова е причината што понекогаш се повикуваме на патната карта: тоа е колекција на (парчиња) пат што се среќаваат на различни точки.</p>
 <p>Друг добар пример за мрежа - и поблиску до нашата сегашна апликација - е <strong>социјална мрежа</strong>. Во социјалната мрежа јазлите се луѓе, а рабовите се „социјални врски“ или „социјални контакти“ меѓу нив. Додека ние обично мислиме дека социјалните мрежи се online, како Facebook или Twitter, идејата функционира и во реалниот свет: кога ќе се сретнете со вашето семејство, одите на пазар, одите на работа или ќе се занесете со која било од активностите од секојдневниот живот што ќе ги додадете рабови на вашата социјална мрежа помеѓу себе и луѓето што ги среќавате. Типично, бројот на луѓе со кои ќе имате социјален контакт ќе биде значително помал од целата популација. Социјалната мрежа ги евидентира луѓето со кои имате контакт, па така и во нашата апликација евидентираат луѓе од кои може да заразите или да бидете заразени.</p>
@@ -431,8 +431,7 @@
 </div>
 <div class="section" id="id2">
 <h2>Комплетни мрежи<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Да претпоставиме дека, при патување или прошетка, доаѓаме во контакт со сите во популација</p>
-<p>Да претпоставиме дека, на вашите патувања, навистина сме стапиле во контакт со сите во населението, така што на овој начин нашата социјална мрежа има рабови што не поврзуваат со сите други. И да претпоставиме дека сите други го прават истото, така што сите беа поврзани со секого. Ова е сепак <em>социјална мрежа</em> - многу густа за да бидете сигурни, можеби како она што се случува во дискотетки (сите се поздравуваат). Исто така, се совпаѓа со претпоставките што ги дадовме претходно за целосно мешање. Значи, ако извршевме симулација на ширење на болеста преку оваа мрежа, веројатно би очекувале да ги видиме истите резултати како и порано.</p>
+<p>Да претпоставиме дека, на нашите патувања, навистина сме стапиле во контакт со сите во населението, така што на овој начин нашата социјална мрежа има рабови што не поврзуваат со сите други. И да претпоставиме дека сите други го прават истото, така што сите беа поврзани со секого. Ова е сепак <em>социјална мрежа</em> - многу густа за да бидете сигурни, можеби како она што се случува во дискотетки (сите се поздравуваат). Исто така, се совпаѓа со претпоставките што ги дадовме претходно за целосно мешање. Значи, ако извршевме симулација на ширење на болеста преку оваа мрежа, веројатно би очекувале да ги видиме истите резултати како и порано.</p>
 <p>Во претходните симулации ја „туркавме“ почетната популација на јазли преку <strong>равенките</strong> за моделите. За <strong>мрежи</strong> можеме да направиме нешто малку поразлично: Секој <em>јазол</em> претставува индивидуа, па затоа имаме колектив од луѓе чија еволуција можеме да ја следиме преку SIR болеста (наместо едноставно да ги броиме). Тоа ќе биде корисно подоцна. Но, јасно е дека има уште пописи за да се следат сите. Потешко е, од програмска перспектива, да се моделира болеста на мрежа - но со тоа ќе добиеме голема флексибилност, како што ќе видиме подоцна.</p>
 <p>Првобитно треба да се наместиме симулации со цел подобро да ги моделираме врските меѓу луѓето. За среќа постојат готови библиотеки<a class="reference external" href="https://pyepydemic.readthedocs.io/en/latest/">[‘]</a><a class="reference external" href="https://networkx.org/">[‘’]</a> кој ја олеснуваат работата со вакви мрежи.</p>
 <div class="cell docutils container">
@@ -452,12 +451,8 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">MonitoredSIR</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Build the observation process.</span>
-<span class="sd">        </span>
-<span class="sd">        :param params: the experimental parameters&#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MonitoredSIR</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
-        <span class="c1"># also monitor other compartments</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trackNodesInCompartment</span><span class="p">(</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">SUSCEPTIBLE</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trackNodesInCompartment</span><span class="p">(</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">REMOVED</span><span class="p">)</span>
 </pre></div>
@@ -474,29 +469,29 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">network_sir</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">pInfected</span><span class="p">,</span> <span class="n">pInfect</span><span class="p">,</span> <span class="n">pRemove</span><span class="p">):</span>
-    <span class="c1"># create the simulator</span>
+    <span class="c1"># креирај готов симулатор</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">MonitoredSIR</span><span class="p">()</span>
     <span class="n">m</span><span class="o">.</span><span class="n">setMaximumTime</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
     <span class="n">e</span> <span class="o">=</span> <span class="n">epydemic</span><span class="o">.</span><span class="n">SynchronousDynamics</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
 
-    <span class="c1"># set the simulation parameters</span>
+    <span class="c1"># намести ги параметрите за симулација</span>
     <span class="n">param</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">param</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_INFECTED</span><span class="p">]</span> <span class="o">=</span> <span class="n">pInfected</span>
     <span class="n">param</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_INFECT</span><span class="p">]</span> <span class="o">=</span> <span class="n">pInfect</span>
     <span class="n">param</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_REMOVE</span><span class="p">]</span> <span class="o">=</span> <span class="n">pRemove</span>
     <span class="n">param</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">Monitor</span><span class="o">.</span><span class="n">DELTA</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="mi">50</span> <span class="c1"># 50 samples</span>
     
-    <span class="c1"># run the simulation</span>
+    <span class="c1"># пушти симулација</span>
     <span class="n">rc</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
     
-    <span class="c1"># extract the time series</span>
+    <span class="c1"># извлеги ги бројките / резултатите</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">experimentalResults</span><span class="p">()[</span><span class="n">MonitoredSIR</span><span class="o">.</span><span class="n">TIMESERIES</span><span class="p">]</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">MonitoredSIR</span><span class="o">.</span><span class="n">OBSERVATIONS</span><span class="p">]</span>
     <span class="n">sss</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">SUSCEPTIBLE</span><span class="p">]</span>
     <span class="n">iss</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">INFECTED</span><span class="p">]</span>
     <span class="n">rss</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">REMOVED</span><span class="p">]</span>
 
-    <span class="c1"># return the time series</span>
+    <span class="c1"># врати ги </span>
     <span class="k">return</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">sss</span><span class="p">,</span> <span class="n">iss</span><span class="p">,</span> <span class="n">rss</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -544,7 +539,6 @@
 <span class="n">pInfect</span> <span class="o">=</span> <span class="mf">0.000005</span>  <span class="c1"># очекуваниот број на луѓе на кои заразена личност ја пренесува болеста / популација</span>
 
 
-<span class="c1"># run the epidemic equations</span>
 <span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">sss</span><span class="p">,</span> <span class="n">iss</span><span class="p">,</span> <span class="n">rss</span><span class="p">)</span> <span class="o">=</span> <span class="n">epidemic_sir</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">pInfected</span><span class="p">,</span> <span class="n">pInfect</span><span class="p">,</span> <span class="n">pRemove</span><span class="p">)</span>
 
 
@@ -761,7 +755,7 @@ var n,a=t("./lib/build-log"),i=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
 \langle k \rangle = \frac{\sum_k N_k}{N}
 \end{equation*}\]</div>
 <p>Ако оваа употреба на зборот дистрибуција звучи како да е поврзана со теоријата на веројатност - тоа е. Хистограмот на степенот ги покажува релативните броеви на јазли со секој различен степен и така ја дефинира веројатноста за случаен избор на јазол со степен <span class="math notranslate nohighlight">\(k\)</span>. <span class="math notranslate nohighlight">\(\langle k \rangle\)</span> е тогаш очекуваната вредност на степенот.</p>
-<p>Постојат многу други метрики што би можеле да ги разгледаме, но дистрибуцијата на степенот е најважна и добро проучена. Сепак, тоа не е целата приказна, бидејќи ќе има многу различни мрежи со иста дистрибуција на степен и просечен степен, во зависност од тоа точно како рабовите што го пресекуваат секој јазол се поврзуваат со други јазли. Значи, додека едната страна од мрежната топологија е зафатена со статистички податоци, има друга страна што се однесува на деталите за кои јазли се <strong>соседни (adjacent)</strong> едни со други, имајќи раб помеѓу нив: важно е <em>кои</em> се вашите пријатели, не само <em>колку имате</em>. Ние понекогаш го нарекуваме множеството јазли во непосредна близина на јазолот како <strong>соседи (neighbours)</strong>.</p>
+<p>Постојат многу други метрики што би можеле да ги разгледаме, но дистрибуцијата на степенот е најважна и добро проучена. Сепак, тоа не е целата приказна, бидејќи ќе има многу различни мрежи со иста дистрибуција на степен и просечен степен, во зависност од тоа точно како рабовите што го пресекуваат секој јазол се поврзуваат со други јазли. Значи, додека едната страна од мрежната топологија е зафатена со статистички податоци, има друга страна што се однесува на деталите за кои јазли се <strong>соседни (adjacent)</strong> едни со други, имајќи раб помеѓу нив: важно е <em>кои</em> се вашите пријатели, не само <em>колку имате</em>. Ние понекогаш го нарекуваме множеството јазли во непосредна близина на јазолот како <strong>множество од соседи (neighbours)</strong>.</p>
 </div>
 </div>
 
